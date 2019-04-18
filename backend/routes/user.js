@@ -27,5 +27,17 @@ userRouter.get('/', (req, res, next) => {
         })
 });
 
+// POST - CREATE 
+userRouter.post('/', (req, res, next) => {
+    const { username } = req.body;
+
+    UserService.createUser(username)
+        .then(data => {
+            res.json({ success: `Created user named ${username} with generated ID: ${data.id}` });
+        })
+        .catch(err => {
+            next(err);
+        })
+});
 
 module.exports = userRouter;

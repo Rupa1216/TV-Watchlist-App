@@ -11,6 +11,15 @@ ShowService.getAllShows = () => {
 }
 
 // GET all shows for specific genre_id
+ShowService.byGenreID = (genre_id) => {
+    const sql = `
+    SELECT * 
+    FROM genres g
+    WHERE g.id = $[genre_id]
+    `
+    return db.one(sql, { genre_id });
+}
+
 // GET all shows for specific user_id
 // GET one show
 // POST new show

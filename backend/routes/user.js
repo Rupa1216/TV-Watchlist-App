@@ -15,5 +15,17 @@ userRouter.get('/:id', (req, res, next) => {
         })
 });
 
+// GET - READ ALL USERS
+userRouter.get('/', (req, res, next) => {
+
+    UserService.getAllUsers()
+        .then(data => {
+            res.json(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+});
+
 
 module.exports = userRouter;

@@ -17,3 +17,12 @@ UserService.getAllUsers = () => {
     `
     return db.any(sql);
 }
+
+UserService.createUser = (username) => {
+    const sql = `
+    INSERT INTO users (username)
+    VALUES ($[username])
+    RETURNING id;
+    `;
+    return db.one(sql, { username })
+}

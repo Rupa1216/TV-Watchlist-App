@@ -2,12 +2,16 @@ const express = require('express');
 const genreRouter = express.Router();
 const GenreService = require('../services/genre');
 
-GenreService.getAllGenres = () => {
-    const sql = `
-    SELECT * 
-    FROM genres
-    `
-    return db.any(sql);
-}
+// GET - READ ALL GENRES
+genreRouter.get('/', (req, res, next) => {
+
+    GenreService.getAllGenres()
+        .then(data => {
+            res.json(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+});
 
 module.exports = genreRouter;

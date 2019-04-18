@@ -26,3 +26,5 @@ UserService.createUser = (username) => {
     `;
     return db.one(sql, { username })
 }
+
+module.exports = UserService;

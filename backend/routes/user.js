@@ -6,7 +6,7 @@ const UserService = require('../services/user');
 userRouter.get('/:id', (req, res, next) => {
     const { id } = req.params;
 
-    UserService.read(id)
+    UserService.getUser(id)
         .then(data => {
             res.json(data);
         })

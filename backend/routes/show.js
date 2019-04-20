@@ -53,4 +53,17 @@ showRouter.get('/:id', (req, res, next) => {
         })
 });
 
+// POST new show
+showRouter.post('/', (req, res, next) => {
+    const { title, img_url, user_id, genre_id } = req.body;
+
+    ShowService.create(title, img_url, user_id, genre_id)
+        .then(data => {
+            res.json({ success: `Created show called ${title} with generated ID: ${data.id}` });
+        })
+        .catch(err => {
+            next(err);
+        })
+});
+
 module.exports = showRouter;

@@ -5,6 +5,7 @@ import './App.css';
 import Navbar from './components/navbar';
 import Home from './components/home';
 import Users from './containers/users';
+import UserProfile from './containers/userprofile';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
             <Switch>
               <Route path='/' exact component={Home} />
               <Route path='/users' exact component={Users} />
+              <Route path='/user/:id' exact component={UserProfile} />
             </Switch>
           </div>
         </HashRouter>

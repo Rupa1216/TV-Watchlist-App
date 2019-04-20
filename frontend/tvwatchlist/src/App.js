@@ -4,6 +4,7 @@ import './App.css';
 
 import Navbar from './components/navbar';
 import Home from './components/home';
+import Users from './containers/users';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
           <div className="page">
             <Switch>
               <Route path='/' exact component={Home} />
+              <Route path='/users' exact component={Users} />
             </Switch>
           </div>
         </HashRouter>

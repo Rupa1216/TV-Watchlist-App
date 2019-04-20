@@ -4,7 +4,9 @@ const express = require('express');
 const app = express();
 
 const userRouter = require('./routes/user');
-const genreRouter = require('./routes/genre')
+const genreRouter = require('./routes/genre');
+const showRouter = require('./routes/show')
+
 
 // MIDDLEWARE NEEDED
 app.use(cors());
@@ -16,6 +18,8 @@ app.use(bodyParser.json())
 // ROUTES
 app.use('/users', userRouter);
 app.use('/genres', genreRouter);
+app.use('/shows', showRouter);
+
 
 app.get('/', (req, res) => {
     res.json({'test': true})

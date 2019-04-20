@@ -48,6 +48,13 @@ ShowService.read = (id) => {
 }
 
 // POST new show
-
+ShowService.create = (title, img_url, user_id, genre_id) => {
+    const sql = `
+    INSERT INTO shows (title, img_url, user_id, genre_id)
+    VALUES ($[title], $[img_url], $[user_id], $[genre_id])
+    RETURNING id;
+    `;
+    return db.one(sql, { title, img_url, user_id, genre_id })
+}
 
 module.exports = ShowService;

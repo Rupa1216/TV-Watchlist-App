@@ -2,7 +2,7 @@ const { db } = require('../db');
 const ShowService = {};
 
 // GET all shows
-ShowService.getAllShows = () => { 
+ShowService.getAllShows = () => {
     const sql = `
     SELECT * 
     FROM shows
@@ -37,7 +37,15 @@ ShowService.getByUser = (user_id) => {
 }
 
 // GET one show
-
+ShowService.read = (id) => {
+    const sql = `
+    SELECT * 
+    FROM shows s
+    WHERE
+    s.id = $[id]
+    `
+    return db.oneOrNone(sql, { id });
+}
 
 // POST new show
 

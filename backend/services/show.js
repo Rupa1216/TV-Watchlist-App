@@ -2,7 +2,7 @@ const { db } = require('../db');
 const ShowService = {};
 
 // GET all shows
-ShowService.getAllShows = () => {
+ShowService.getAllShows = () => { 
     const sql = `
     SELECT * 
     FROM shows
@@ -10,8 +10,8 @@ ShowService.getAllShows = () => {
     return db.any(sql);
 }
 
-// GET all shows for specific genre_id
-ShowService.byGenreID = (genre_id) => {
+// GET all shows for specific genre_id 
+ShowService.getByGenre = (genre_id) => {
     const sql = `
     SELECT * 
     FROM genres g
@@ -20,11 +20,26 @@ ShowService.byGenreID = (genre_id) => {
     WHERE
     s.genre_id = $[genre_id]
     `
-    return db.one(sql, { genre_id });
+    return db.any(sql, { genre_id });
 }
 
-// GET all shows for specific user_id
+// GET all shows for specific user_id:
+ShowService.getByUser = (user_id) => {
+    const sql = `
+    SELECT * 
+    FROM shows s
+    LEFT JOIN users u
+    ON s.user_id = u.id
+    WHERE
+    s.user_id = $[user_id]
+    `
+    return db.any(sql, { user_id });
+}
+
 // GET one show
+
+
 // POST new show
+
 
 module.exports = ShowService;

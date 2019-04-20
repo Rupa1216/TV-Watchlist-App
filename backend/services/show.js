@@ -15,7 +15,10 @@ ShowService.byGenreID = (genre_id) => {
     const sql = `
     SELECT * 
     FROM genres g
-    WHERE g.id = $[genre_id]
+    LEFT JOIN shows s
+    ON g.id = s.genre_id
+    WHERE
+    s.genre_id = $[genre_id]
     `
     return db.one(sql, { genre_id });
 }

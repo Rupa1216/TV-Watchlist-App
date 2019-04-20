@@ -13,7 +13,7 @@ UserService.getUser = (id) => {
 UserService.getAllUsers = () => {
     const sql = `
     SELECT * 
-    FROM users u
+    FROM users
     `
     return db.any(sql);
 }

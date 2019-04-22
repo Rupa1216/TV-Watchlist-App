@@ -12,11 +12,11 @@ export default class UserProfile extends React.Component {
 
         axios.get('http://localhost:3010/shows/byuser/'+id)
         .then((res) => {
-            console.log(res.data);
+            console.log('res.data', res.data);
             res.data.map((e, i) => {
                 this.setState({
                     shows: [...this.state.shows,
-                    { id: e.id, img_url: e.img_url, title: e.title, }]
+                    { genre_name: e.genre_name, id: e.id, img_url: e.img_url, title: e.title}]
                 })
             })
         })

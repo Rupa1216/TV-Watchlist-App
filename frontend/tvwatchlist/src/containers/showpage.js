@@ -23,12 +23,11 @@ export default class ShowPage extends React.Component {
                 <h1>Show Page</h1>
                 <div className='mt-5'>
                 <div>
-                    <img src={show.img_url} alt={show.title} />
+                    <img src={show.img_url} alt={show.title} style={{ width: '200px', height: '300px' }} />
                 </div>
                 <div className='my-auto ml-3'>
                     <h5>{show.title}</h5>
-                    <h6>Genre</h6>
-                    {/* <h6>{show.genre_name}</h6> */}
+                    <h6>{show.genre_name}</h6>
                 </div>
             </div>
             </>

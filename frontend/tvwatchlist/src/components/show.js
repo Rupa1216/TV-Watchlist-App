@@ -8,7 +8,7 @@ export default (props) => {
         <div className='d-flex col-6 mt-5'>
             <div>
                 <Link to={'/show/'+id}>
-                    <img src={props.data.img_url} alt={props.data.title} />
+                    <img src={props.data.img_url} style={{ width: '200px', height: '300px' }} alt={props.data.title} />
                 </Link>
             </div>
             <div className='my-auto ml-3'>

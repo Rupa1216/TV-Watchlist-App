@@ -26,27 +26,48 @@ ShowService.getByGenre = (genre_id) => {
 // GET all shows for specific user_id:
 ShowService.getByUser = (user_id) => {
     const sql = `
-    SELECT * 
-    FROM shows s
-    LEFT JOIN users u
-    ON s.user_id = u.id
-    LEFT JOIN genres g
-	ON s.genre_id = g.id
+    SELECT
+    s.id,
+    s.title,
+    s.img_url,
+    s.user_id,
+    s.genre_id,
+    u.username,
+    g.genre_name
+    FROM
+    shows s
+    LEFT JOIN users u ON s.user_id = u.id
+    LEFT JOIN genres g ON g.id = s.genre_id
     WHERE
     s.user_id = $[user_id]
     `
     return db.any(sql, { user_id });
 }
 
-// GET one show
-ShowService.read = (id) => {
+// GET one show by its ID
+ShowService.readByID = (id) => {
     const sql = `
-    SELECT * 
+    SELECT s.*, u.username 
     FROM shows s
+    LEFT JOIN users u
+    ON s.user_id = u.id
     WHERE
     s.id = $[id]
     `
     return db.oneOrNone(sql, { id });
+}
+
+// GET one show by title
+ShowService.readByTitle = (title) => {
+    const sql = `
+    SELECT s.*, u.username 
+    FROM shows s
+    LEFT JOIN users u
+    ON s.user_id = u.id
+    WHERE
+    s.title = $[title]
+    `
+    return db.any(sql, { id });
 }
 
 // POST new show

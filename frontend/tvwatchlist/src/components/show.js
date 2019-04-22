@@ -12,10 +12,9 @@ export default (props) => {
                 </Link>
             </div>
             <div className='my-auto ml-3'>
-                <Link to={'/show/'+id}>
+                <Link to={'/show/'+id} style={{textDecoration: 'none'}}>
                     <h5>{props.data.title}</h5>
                 </Link>
-                {/* <h6>Genre</h6> */}
                 <h6>{props.data.genre_name}</h6>
             </div>
         </div>

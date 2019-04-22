@@ -30,6 +30,8 @@ ShowService.getByUser = (user_id) => {
     FROM shows s
     LEFT JOIN users u
     ON s.user_id = u.id
+    LEFT JOIN genres g
+	ON s.genre_id = g.id
     WHERE
     s.user_id = $[user_id]
     `

@@ -33,6 +33,7 @@ showRouter.get('/byuser/:user_id', (req, res, next) => {
 
     ShowService.getByUser(user_id)
         .then(data => {
+            console.log('data', data)
             res.json(data);
         })
         .catch(err => {
@@ -44,7 +45,7 @@ showRouter.get('/byuser/:user_id', (req, res, next) => {
 showRouter.get('/:id', (req, res, next) => {
     const { id } = req.params;
 
-    ShowService.read(id)
+    ShowService.readByID(id)
         .then(data => {
             res.json(data);
         })

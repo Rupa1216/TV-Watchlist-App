@@ -47,10 +47,12 @@ ShowService.getByUser = (user_id) => {
 // GET one show by its ID
 ShowService.readByID = (id) => {
     const sql = `
-    SELECT s.*, u.username 
+    SELECT s.*, u.username, g.genre_name
     FROM shows s
     LEFT JOIN users u
     ON s.user_id = u.id
+    LEFT JOIN genres g
+    ON s.genre_id = g.id
     WHERE
     s.id = $[id]
     `

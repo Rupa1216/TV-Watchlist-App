@@ -4,32 +4,45 @@ import axios from 'axios';
 export default class ShowPage extends React.Component {
     state = {
         show: {},
+        title: '',
         users: [],
         comments: []
     }
 
+    // getShowInfo = () => {
+    //     const { id } = this.props.match.params;
+    //     return axios.get('http://localhost:3010/shows/' + id)
+    // }
+
+    // getWhosWatching = () => {
+    //     const { title } = this.state;
+    //     const titleInURL = title.split(' ').join('')
+    //     return axios.get('http://localhost:3010/shows/' + titleInURL)
+    // }
+
     componentDidMount() {
         const { id } = this.props.match.params;
+        
         axios.get('http://localhost:3010/shows/' + id)
             .then((res) => {
-                this.setState({show: res.data})
+                console.log('data', res.data)
+                this.setState({ show: res.data })
             })
     }
 
     render() {
-        const {show} = this.state;
+        const { show } = this.state;
         return (
             <>
-                <h1>Show Page</h1>
-                <div className='mt-5'>
-                <div>
-                    <img src={show.img_url} alt={show.title} style={{ width: '200px', height: '300px' }} />
+                <div className='d-flex mt-5 ml-5'>
+                    <div>
+                        <img src={show.img_url} alt={show.title} style={{ width: '200px', height: '300px' }} />
+                    </div>
+                    <div className='my-auto ml-3'>
+                        <h3>{show.title}</h3>
+                        <h5>{show.genre_name}</h5>
+                    </div>
                 </div>
-                <div className='my-auto ml-3'>
-                    <h5>{show.title}</h5>
-                    <h6>{show.genre_name}</h6>
-                </div>
-            </div>
             </>
         )
     }

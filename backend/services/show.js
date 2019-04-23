@@ -69,7 +69,7 @@ ShowService.readByTitle = (title) => {
     WHERE
     s.title = $[title]
     `
-    return db.any(sql, { id });
+    return db.any(sql, { title });
 }
 
 // POST new show

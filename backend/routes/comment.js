@@ -16,6 +16,16 @@ commentRouter.get('/:show_id', (req, res, next) => {
 });
 
 // POST new comment
+commentRouter.post('/', (req, res, next) => {
+    const { comment_body, user_id, show_id } = req.body;
 
+    CommentService.create(comment_body, user_id, show_id)
+        .then(data => {
+            res.json({ success: `Created comment with generated ID: ${data.id}` });
+        })
+        .catch(err => {
+            next(err);
+        })
+});
 
 module.exports = commentRouter;

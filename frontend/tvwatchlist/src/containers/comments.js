@@ -37,7 +37,7 @@ class Comments extends React.Component {
                     </form>
                 </div>
                 <div className='ml-5'>
-                    <h5>{commentsList.length ? commentsList.length : null} Comments:</h5>
+                    <h5>{commentsList.length ? commentsList.length : null} {commentsList.length === 1? 'Comment:' : 'Comments:'}</h5>
                     <div>
                         {commentsList}
                     </div>

@@ -5,12 +5,24 @@ export default class CreateShow extends React.Component {
     state = {
         title: '',
         img_url: '',
-        genre: '',
+        genres: [],
         user_id: 5
     }
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
+    }
+
+    componentDidMount() {
+        const {genres} = this.state;
+
+        axios.get('http://localhost:3010/genres/')
+            .then((res) => {
+                res.data.forEach((e) => {
+                    genres.push(e.genre_name)
+                })
+                this.setState({ genres })
+            })
     }
 
     render() {

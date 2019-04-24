@@ -65,7 +65,7 @@ class Comments extends React.Component {
             <>
                 <div>
                     <form onSubmit={this.handleSubmit} className='mt-4 ml-5 input-group mb-5'>
-                        <input type='text' placeholder='Insert new comment...' className='mr-2' onChange={this.handleChange} />
+                        <input type='text' placeholder='Insert new comment...' className='mr-2' onChange={this.handleChange} value={this.state.input} />
                         <button type='submit' className='btn btn-sm btn-outline-secondary'>Submit</button>
                     </form>
                 </div>

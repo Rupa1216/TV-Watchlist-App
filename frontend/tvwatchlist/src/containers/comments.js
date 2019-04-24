@@ -5,7 +5,8 @@ import { withRouter } from 'react-router-dom';
 class Comments extends React.Component {
     state = {
         input: '',
-        comments: []
+        comments: [],
+        username: 'Rupa1216'
     }
 
     componentDidMount() {
@@ -27,26 +28,37 @@ class Comments extends React.Component {
     }
 
     handleSubmit = (e) => {
-        const { input } = this.state;
-        const { id } = this.props.match.params;
+        e.preventDefault();
 
-        axios.post('http://localhost:3010/comments/', {
+        const { input, comments } = this.state;
+        const { id } = this.props.match.params;
+        const req_body = {
             comment_body: input,
             user_id: 5,
-            show_id: id
-        })
-            .then(function (res) {
-                console.log(res);
+            show_id: parseInt(id)
+        }
+
+        axios.post('http://localhost:3010/comments/', req_body)
+            .then((res) => {
+                const { id } = res.data;
+                const newComment = {...req_body, comment_id: id}
+
+                comments.unshift(newComment)
+                this.setState({
+                    comments, input: ''
+                    // comments: [...this.state.comments, {...req_body, comment_id: id}]
+                })
             })
-            .catch(function (err) {
+            .catch((err) => {
                 console.log(err);
             });
     }
 
     render() {
-        const { comments } = this.state;
+        console.log('comments state', this.state)
+        const { comments, username } = this.state;
         const commentsList = comments.map((e, i) => {
-            return <h6 className='my-4' key={i}> {e.username} : {e.comment_body}</h6>
+            return <h6 className='my-4' key={i}> {e.username ? e.username : username} : {e.comment_body}</h6>
         })
 
         return (

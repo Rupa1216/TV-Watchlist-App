@@ -6,6 +6,7 @@ export default class CreateShow extends React.Component {
         title: '',
         img_url: '',
         genres: [],
+        selectedGenre: '',
         user_id: 5
     }
 
@@ -13,8 +14,12 @@ export default class CreateShow extends React.Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
+    handleSelectedGenre = (e) => {
+        this.setState({ selectedGenre: e.target.value })
+    }
+
     componentDidMount() {
-        const {genres} = this.state;
+        const { genres } = this.state;
 
         axios.get('http://localhost:3010/genres/')
             .then((res) => {
@@ -29,7 +34,7 @@ export default class CreateShow extends React.Component {
         const { user_id, genres } = this.state;
         console.log('create show state', this.state);
         const genreList = genres.map((e, i) => {
-            return <option key={i} value={i}>{e}</option>
+            return <option key={i} value={e.value}>{e}</option>
         })
 
         return (
@@ -46,7 +51,7 @@ export default class CreateShow extends React.Component {
                         <div className="input-group-prepend">
                             <label className="input-group-text" htmlFor="inputGroupSelect01">Genre</label>
                         </div>
-                        <select className="custom-select" id="inputGroupSelect01">
+                        <select onChange={this.handleSelectedGenre} value={this.state.selectedGenre} className="custom-select" id="inputGroupSelect01">
                             <option defaultValue>Choose...</option>
                             {genreList}
                         </select>

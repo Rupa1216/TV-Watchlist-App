@@ -20,7 +20,7 @@ export default (props) => {
                         <Link className="nav-link" to="/shows">TV Shows</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/create" tabIndex="-1">Create Post</Link>
+                        <Link className="nav-link" to="/user/post" tabIndex="-1">Create</Link>
                     </li>
                 </ul>
             </div>

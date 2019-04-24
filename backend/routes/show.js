@@ -33,7 +33,6 @@ showRouter.get('/byuser/:user_id', (req, res, next) => {
 
     ShowService.getByUser(user_id)
         .then(data => {
-            console.log('data', data)
             res.json(data);
         })
         .catch(err => {

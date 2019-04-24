@@ -26,6 +26,23 @@ class Comments extends React.Component {
         this.setState({ input: e.target.value })
     }
 
+    handleSubmit = (e) => {
+        const { input } = this.state;
+        const { id } = this.props.match.params;
+
+        axios.post('http://localhost:3010/comments/', {
+            comment_body: input,
+            user_id: 5,
+            show_id: id
+        })
+            .then(function (res) {
+                console.log(res);
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+    }
+
     render() {
         const { comments } = this.state;
         const commentsList = comments.map((e, i) => {
@@ -35,7 +52,7 @@ class Comments extends React.Component {
         return (
             <>
                 <div>
-                    <form className='mt-4 ml-5 input-group mb-5'>
+                    <form onSubmit={this.handleSubmit} className='mt-4 ml-5 input-group mb-5'>
                         <input type='text' placeholder='Insert new comment...' className='mr-2' onChange={this.handleChange} />
                         <button type='submit' className='btn btn-sm btn-outline-secondary'>Submit</button>
                     </form>

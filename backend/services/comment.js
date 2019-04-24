@@ -13,7 +13,7 @@ CommentService.read = (show_id) => {
     ON c.user_id = u.id
     WHERE
     c.show_id = $[show_id]
-    ORDER BY c.id 
+    ORDER BY c.id DESC
     `
     return db.any(sql, { show_id });
 }

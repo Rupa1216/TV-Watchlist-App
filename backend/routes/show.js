@@ -72,7 +72,9 @@ showRouter.post('/', (req, res, next) => {
 
     ShowService.create(title, img_url, user_id, genre_id)
         .then(data => {
-            res.json({ success: `Created show called ${title} with generated ID: ${data.id}` });
+            res.json({
+                id: data.id 
+            });
         })
         .catch(err => {
             next(err);

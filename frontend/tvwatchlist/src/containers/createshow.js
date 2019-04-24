@@ -9,12 +9,12 @@ export default class CreateShow extends React.Component {
         user_id: 5
     }
 
-    handleTitleChange = (e) => {
-        this.setState({title: e.target.value})
+    handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
     }
 
     render() {
-        const {user_id} = this.state;
+        const { user_id } = this.state;
         console.log('create show state', this.state);
 
         return (
@@ -22,10 +22,10 @@ export default class CreateShow extends React.Component {
                 <h1 className='ml-5 pl-3 mt-4 mb-5'>Add new show to watch...</h1>
                 <form className='ml-5'>
                     <div className="form-group col-4 mb-3">
-                        <input className='form-control mb-2' onChange={this.handleTitleChange} type='text' placeholder='Insert Title...' />
+                        <input className='form-control mb-2' onChange={this.handleChange} name='title' type='text' placeholder='Insert Title...' />
                     </div>
                     <div className="form-group col-4">
-                        <input className='form-control mb-2'  type='text' placeholder='Insert Image URL...' />
+                        <input className='form-control mb-2' onChange={this.handleChange} name='img_url' type='text' placeholder='Insert Image URL...' />
                     </div>
                     <div className="input-group col-4 mb-5">
                         <div className="input-group-prepend">

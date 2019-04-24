@@ -26,8 +26,11 @@ export default class CreateShow extends React.Component {
     }
 
     render() {
-        const { user_id } = this.state;
+        const { user_id, genres } = this.state;
         console.log('create show state', this.state);
+        const genreList = genres.map((e, i) => {
+            return <option key={i} value={i}>{e}</option>
+        })
 
         return (
             <>
@@ -45,9 +48,7 @@ export default class CreateShow extends React.Component {
                         </div>
                         <select className="custom-select" id="inputGroupSelect01">
                             <option defaultValue>Choose...</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            {genreList}
                         </select>
                     </div>
                     <button type="submit" className="btn btn-outline-secondary col-4 ml-3">Post new show for User ID: {user_id}</button>

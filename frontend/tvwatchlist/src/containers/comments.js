@@ -13,13 +13,17 @@ class Comments extends React.Component {
 
         axios.get('http://localhost:3010/comments/' + id)
             .then((res) => {
-                    this.setState({
-                        comments: res.data
-                    })
+                this.setState({
+                    comments: res.data
+                })
             })
             .catch((err) => {
                 console.log(err);
             })
+    }
+
+    handleChange = (e) => {
+        this.setState({ input: e.target.value })
     }
 
     render() {
@@ -32,12 +36,12 @@ class Comments extends React.Component {
             <>
                 <div>
                     <form className='mt-4 ml-5 input-group mb-5'>
-                        <input type='text' placeholder='Insert new comment...' className='mr-2' />
+                        <input type='text' placeholder='Insert new comment...' className='mr-2' onChange={this.handleChange} />
                         <button type='submit' className='btn btn-sm btn-outline-secondary'>Submit</button>
                     </form>
                 </div>
                 <div className='ml-5'>
-                    <h5>{commentsList.length ? commentsList.length : null} {commentsList.length === 1? 'Comment:' : 'Comments:'}</h5>
+                    <h5>{commentsList.length ? commentsList.length : null} {commentsList.length === 1 ? 'Comment:' : 'Comments:'}</h5>
                     <div>
                         {commentsList}
                     </div>

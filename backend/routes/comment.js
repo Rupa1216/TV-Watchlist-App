@@ -21,7 +21,9 @@ commentRouter.post('/', (req, res, next) => {
 
     CommentService.create(comment_body, user_id, show_id)
         .then(data => {
-            res.json({ success: `Created comment with generated ID: ${data.id}` });
+            res.json({ 
+                id: data.id 
+            });
         })
         .catch(err => {
             next(err);

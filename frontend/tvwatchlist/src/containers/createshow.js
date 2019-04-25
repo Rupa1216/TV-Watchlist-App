@@ -64,7 +64,7 @@ export default class CreateShow extends React.Component {
         const genreList = genres.map((e, i) => {
             return <option key={i} value={e.id} name={e.genre_name}>{e.id} - {e.genre_name}</option>
         })
-        const alert = <div className="alert alert-success" role="alert">
+        const alert = <div className="alert alert-success ml-3 mb-3" role="alert" style={{width: "40%"}}>
         Success! You've added a new show. Click <Link to={'/show/'+show_id} className="alert-link">here</Link> to view.
     </div>
 

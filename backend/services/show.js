@@ -4,8 +4,10 @@ const ShowService = {};
 // GET all shows
 ShowService.getAllShows = () => {
     const sql = `
-    SELECT * 
-    FROM shows
+    SELECT s.*, u.username 
+    FROM shows s
+    LEFT JOIN users u
+    ON s.user_id = u.id
     `
     return db.any(sql);
 }

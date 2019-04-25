@@ -20,8 +20,7 @@ export default class ShowPage extends React.Component {
     }
 
     render() {
-        const { show, comments } = this.state;
-        console.log('this is the state', this.state);
+        const { show } = this.state;
 
         return (
             <>

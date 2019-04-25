@@ -9,6 +9,7 @@ import Users from './containers/users';
 import UserProfile from './containers/userprofile';
 import ShowPage from './containers/showpage';
 import CreateShow from './containers/createshow';
+import AllShows from './containers/allshows';
 
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
               <Route path='/user/post' exact component={CreateShow} />
               <Route path='/user/:id' exact component={UserProfile} />
               <Route path='/show/:id' exact component={ShowPage} />
+              <Route path='/shows' exact component={AllShows} />
             </Switch>
           </div>
         </HashRouter>

@@ -40,11 +40,24 @@ showRouter.get('/byuser/:user_id', (req, res, next) => {
         })
 });
 
-// GET one show 
+// GET one show by ID
 showRouter.get('/:id', (req, res, next) => {
     const { id } = req.params;
 
-    ShowService.read(id)
+    ShowService.readByID(id)
+        .then(data => {
+            res.json(data);
+        })
+        .catch(err => {
+            next(err);
+        })
+});
+
+// GET one show by title
+showRouter.get('/bytitle/:title', (req, res, next) => {
+    const { title } = req.params;
+
+    ShowService.readByTitle(title)
         .then(data => {
             res.json(data);
         })
@@ -59,7 +72,9 @@ showRouter.post('/', (req, res, next) => {
 
     ShowService.create(title, img_url, user_id, genre_id)
         .then(data => {
-            res.json({ success: `Created show called ${title} with generated ID: ${data.id}` });
+            res.json({
+                id: data.id 
+            });
         })
         .catch(err => {
             next(err);

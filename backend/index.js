@@ -6,6 +6,7 @@ const app = express();
 const userRouter = require('./routes/user');
 const genreRouter = require('./routes/genre');
 const showRouter = require('./routes/show')
+const commentRouter = require('./routes/comment')
 
 
 // MIDDLEWARE NEEDED
@@ -19,6 +20,7 @@ app.use(bodyParser.json())
 app.use('/users', userRouter);
 app.use('/genres', genreRouter);
 app.use('/shows', showRouter);
+app.use('/comments', commentRouter);
 
 
 app.get('/', (req, res) => {

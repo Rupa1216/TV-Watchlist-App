@@ -5,8 +5,8 @@ import User from '../components/user';
 export default class Users extends React.Component {
 
     state = {
-        username: "PamAbr",
-        userID: 20,
+        username: "Rupa1216",
+        userID: 5,
         users: []
     }
 
